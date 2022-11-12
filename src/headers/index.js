@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { CrossIcon, NavIcon } from "../assets/icons";
-import { Button, useMediaQuery } from "@mui/material";
+import { DownArrowIcon } from "../assets/icons";
 import "./style.css";
-import logo1 from "./../assets/shop-n-earn-1.png";
-import logo3 from "./../assets/shop-n-earn-3.png";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../redux/slices/userSlice";
-import { setAuthToken, setIsAuthenticated } from "../redux/slices/authSlice";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-    const greaterThan768 = useMediaQuery("(min-width:768px)");
-    const [open, setOpen] = useState(false);
-    const dispatch = useDispatch();
-    const isAuthenticated = useSelector(
-        (state) => state.authenticated.isAuthenticated
-      );
-      const navigate = useNavigate();
-    
-      useEffect(() => {
-        if (!isAuthenticated) {
-          navigate("/login");
-        }
-      }, [isAuthenticated]);
+    const [today, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
     return (
         <>
             <div>
-                
+                <div className="py-6 px-4 flex gap-4 items-center justify-end">
+                    <div>
+                        <p className="text-2xl font-bold">{today.getHours()}:{today.getMinutes()}:{today.getSeconds()}</p>
+                    </div>
+                    <div className="flex gap-3 items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-8 h-8 rounded-full" alt="" />
+                        <p className="text-text3 text-lg">Gautam Reddy</p>
+                        <DownArrowIcon />
+                    </div>
+                </div>
             </div>
         </>
     );
