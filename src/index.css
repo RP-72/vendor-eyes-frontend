@@ -10,3 +10,8 @@ body {
     width: 100%;
     display: flex;
 }
+
+.scrollable {
+    height: 100vh;
+    overflow: scroll;
+}
