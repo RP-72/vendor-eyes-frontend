@@ -6,12 +6,14 @@ import { PrivateRoute } from "./PrivateRoute";
 import Analysis from "../pages/analysis";
 import Insights from "../pages/insights";
 import Upload from "../pages/upload";
+import Register from "../pages/register";
 export const PublicRoute = () => {
     
   return (
     <Router>
       <Routes>
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/analysis" element={<Analysis />} />
         <Route exact path="/insights" element={<Insights />} />
