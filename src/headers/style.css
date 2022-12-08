@@ -1,0 +1,19 @@
+.mobile {
+    display: none;
+  }
+  
+  .desktop {
+    display: flex;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .mobile {
+      display: flex;
+    }
+    .desktop {
+      display: none;
+    }
+    .navbg{
+        background-color: #f3ce3a;
+    }
+  }
