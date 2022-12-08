@@ -10,7 +10,7 @@ import Sidebar from "../../sidebar";
 import Dropzone from "./Dropzone";
 
 
-const UploadSection = ({title}) => {
+const UploadSection = ({title, type}) => {
   return(
     <div
       style={{display: "flex", flexDirection: "column", justifyContent: "center"}}
@@ -21,8 +21,8 @@ const UploadSection = ({title}) => {
           fontWeight: "bold",
           marginBottom: "1rem",
         }}
-      >Upload {title}</div>
-      <Dropzone />
+      >{title}</div>
+      <Dropzone type={type} />
 
     </div>
   )
@@ -35,8 +35,8 @@ const Upload = () => {
         <div className="w-10/12 scrollable">
           <Header />
           <div style={{display: "flex", alignItems: "centre", justifyContent:"space-evenly" }}>
-            <UploadSection title="Products" />
-            <UploadSection title="Stores" />
+            <UploadSection title="Add Sales data" type="sale" />
+            <UploadSection title="Update Inventory" type="inventory" />
           </div>
         </div>
       </div>

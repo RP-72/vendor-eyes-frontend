@@ -3,7 +3,9 @@ import "./style.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import CancelIcon from '@mui/icons-material/Cancel';
-export default function Dropzone() {
+import axios from 'axios';
+
+export default function Dropzone({type}) {
   // drag state
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState(null);
@@ -31,7 +33,24 @@ export default function Dropzone() {
   }
   const handleUpload = function() {
     // make an API call to upload the file
-    setFile(null)
+
+    const formData = new FormData();
+    formData.append('file', file);
+    axios.post(`http://localhost:5000/upload/${type}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      // handle the response
+      console.log(response);
+    })
+    .catch(error => {
+      // handle the error
+      console.log(error);
+    });
+
+    // setFile(null)
   }
   const handleDrop = function(e) {
     e.preventDefault();

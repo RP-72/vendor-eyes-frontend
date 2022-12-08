@@ -37,8 +37,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Total Revenue</p>
-                    <h2 className="text-2xl font-bold mt-1">$1024.8k</h2
-                    >
+                    <h2 className="text-2xl font-bold mt-1">$1024.8k</h2>
                   </div>
                 </div>
 
