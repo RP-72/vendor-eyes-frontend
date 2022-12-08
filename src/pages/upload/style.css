@@ -5,6 +5,18 @@
   .desktopView {
     display: block;
   }
+
+  .CSV{
+    font-Size: 1rem;
+    /* font-weight: ; */
+    margin-Bottom: 1rem;
+    margin: 3rem;
+    width: 60%;
+    padding: 1rem;
+    border: 2px dotted grey;
+    background-color: white;
+    border-radius: 13px;
+  }
   
   @media only screen and (max-width: 768px) {
     .mobileView {

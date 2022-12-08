@@ -26,6 +26,7 @@ const UploadSection = ({title, type}) => {
 
     </div>
   )
+
 }
 const Upload = () => {
   return (
@@ -34,6 +35,9 @@ const Upload = () => {
         <Sidebar />
         <div className="w-10/12 scrollable">
           <Header />
+          <div className="CSV">
+          <h1>To download this CSV Click <a href="" style={{color: "blue", textDecoration: "underline"}}>Here</a></h1>
+          </div>
           <div style={{display: "flex", alignItems: "centre", justifyContent:"space-evenly" }}>
             <UploadSection title="Add Sales data" type="sale" />
             <UploadSection title="Update Inventory" type="inventory" />
