@@ -8,9 +8,9 @@ import { setToast } from "../../redux/slices/toastSlice";
 import "./style.css";
 import Sidebar from "../../sidebar";
 import Dropzone from "./Dropzone";
+import urls from "../../constants"
 
-
-const UploadSection = ({title, type}) => {
+const UploadSection = ({title, uploadUrl}) => {
   return(
     <div
       style={{display: "flex", flexDirection: "column", justifyContent: "center"}}
@@ -22,7 +22,7 @@ const UploadSection = ({title, type}) => {
           marginBottom: "1rem",
         }}
       >{title}</div>
-      <Dropzone type={type} />
+      <Dropzone uploadUrl={uploadUrl} />
 
     </div>
   )
@@ -35,8 +35,8 @@ const Upload = () => {
         <div className="w-10/12 scrollable">
           <Header />
           <div style={{display: "flex", alignItems: "centre", justifyContent:"space-evenly" }}>
-            <UploadSection title="Add Sales data" type="sale" />
-            <UploadSection title="Update Inventory" type="inventory" />
+            <UploadSection title="Add Sales data" uploadUrl={urls.uploadSales} />
+            <UploadSection title="Update Inventory" uploadUrl={urls.uploadInventory} />
           </div>
         </div>
       </div>

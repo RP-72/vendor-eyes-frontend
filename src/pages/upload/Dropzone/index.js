@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 
-export default function Dropzone({type}) {
+export default function Dropzone({uploadUrl}) {
   // drag state
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState(null);
@@ -36,7 +36,7 @@ export default function Dropzone({type}) {
 
     const formData = new FormData();
     formData.append('file', file);
-    axios.post(`http://localhost:5000/upload/${type}`, formData, {
+    axios.post(uploadUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
