@@ -14,14 +14,15 @@ export const PublicRoute = () => {
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/analysis" element={<Analysis />} />
-        <Route exact path="/insights" element={<Insights />} />
-        <Route exact path="/upload" element={<Upload />} />
+    
         {/* <Route exact path="/" element={<Home />} /> */}
 
         <Route exact path="/" element={<PrivateRoute />}>
-          {/* <Route exact path="/payment" element={<Payment />} /> */}
+          <Route exact path="/" element={<Dashboard />} />  
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/analysis" element={<Analysis />} />
+          <Route exact path="/insights" element={<Insights />} />
+          <Route exact path="/upload" element={<Upload />} />
         </Route>
       </Routes>
     </Router>

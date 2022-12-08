@@ -8,8 +8,26 @@ import { setToast } from "../../redux/slices/toastSlice";
 import Graph from "./Graph"
 import "./style.css";
 import Sidebar from "../../sidebar";
+import axios from "axios";
+import urls from "../../constants"
 
 const Dashboard = () => {
+  const token = useSelector(state => state.authenticated.token)
+  const [dashboardData, setDashboardData] = useState({})
+  useEffect(() => {
+    axios.get(urls.dashboard, {
+      headers: {
+        "Content-Type": "application/json",
+        "token": token
+      }
+    })
+    .then(res => {
+      setDashboardData(res.data)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])
   return (
     <>
       <div className="main">
@@ -27,7 +45,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Monthly Revenue</p>
-                    <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
+                    <h2 className="text-2xl font-bold mt-1">${dashboardData.monthlyRevenue}</h2>
                   </div>
                 </div>
 
@@ -37,7 +55,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Total Revenue</p>
-                    <h2 className="text-2xl font-bold mt-1">$1024.8k</h2>
+                    <h2 className="text-2xl font-bold mt-1">${dashboardData.totalProducts}</h2>
                   </div>
                 </div>
 
@@ -47,7 +65,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Number of Stores</p>
-                    <h2 className="text-2xl font-bold mt-1">21</h2>
+                    <h2 className="text-2xl font-bold mt-1">{dashboardData.totalStores}</h2>
                   </div>
                 </div>
 
@@ -57,14 +75,20 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Number of Products</p>
-                    <h2 className="text-2xl font-bold mt-1">248</h2>
+                    <h2 className="text-2xl font-bold mt-1">{dashboardData.totalRevenue}</h2>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-            <Graph />
-            <Graph />
+            <Graph data={
+              dashboardData.dailySales.x.map((val, ind) => {
+                return {
+                  name: dashboardData.dailySales.x[ind],
+                  sale: dashboardData.dailySales.y[ind]
+                }
+              })
+            } />
         </div>
       </div>
     </>

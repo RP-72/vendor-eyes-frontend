@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from "react"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,6 +18,7 @@ import urls from "../../constants"
 import { useDispatch } from 'react-redux';
 import {setIsAuthenticated, setAuthToken} from "../../redux/slices/authSlice"
 import { redirect } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Copyright(props) {
   return (
@@ -34,22 +36,33 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [name, setName] = React.useState("")
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    axios.post(urls.register, {name, email, password})
+      .then((res) => {
+        if(res.status === 200){
+          dispatch(
+            setAuthToken(res.data.token)
+          )
+        }
+        window.location.pathname = "/dashboard" 
+      })
+      .catch(err => {
+        window.alert(err.response.data.message)
+      })
   };
 
   return (
     <ThemeProvider theme={theme}>
+      {
+        loading ? (
+          <CircularProgress />
+        ) : (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -113,7 +126,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Log in
                 </Link>
               </Grid>
@@ -122,6 +135,8 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
+      )
+    }
     </ThemeProvider>
   );
 }

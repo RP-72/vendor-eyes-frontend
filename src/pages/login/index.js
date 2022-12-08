@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from "react"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import urls from "../../constants"
+import axios from "axios"
+import { useDispatch } from 'react-redux';
+import {setAuthToken} from "../../redux/slices/authSlice"
 
 function Copyright(props) {
   return (
@@ -29,9 +34,26 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    setLoading(true)
+    axios.post(urls.login, 
+      {
+        email: data.get("email"), 
+        password: data.get("password")
+      })
+      .then((res) => {
+        if(res.status === 200){
+          dispatch(setAuthToken(res.data.token))
+          window.location.pathname = "/dashboard"
+        }
+      })
+      .catch(err => {
+        setLoading(false)
+      })
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -76,10 +98,6 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
             />
             <Button
               type="submit"

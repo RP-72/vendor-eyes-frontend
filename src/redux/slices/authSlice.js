@@ -8,6 +8,7 @@ export const authenticatedSlice = createSlice({
       state.isAuthenticated = action.payload;
     },
     setAuthToken: (state, action) => {
+      console.log(action.payload)
       state.token = action.payload;
     },
   },
