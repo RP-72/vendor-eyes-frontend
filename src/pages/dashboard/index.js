@@ -82,10 +82,10 @@ const Dashboard = () => {
             </div>
           </div>
             <Graph data={
-              dashboardData.dailySales.x.map((val, ind) => {
+              dashboardData.dailySales?.x?.map((val, ind) => {
                 return {
-                  name: dashboardData.dailySales.x[ind],
-                  sale: dashboardData.dailySales.y[ind]
+                  name: dashboardData.dailySales?.x[ind],
+                  sale: dashboardData.dailySales?.y[ind]
                 }
               })
             } />
