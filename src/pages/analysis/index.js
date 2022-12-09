@@ -108,43 +108,6 @@ const Analysis = () => {
                   </div>
                 </div>
               </div>
-
-
-              <div className="mt-4 grid grid-cols-2 gap-8">
-                <div className="flex flex-col justify-between">
-                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between">
-                    <div>
-                      <MonthlyRevenueIcon />
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Monthly Revenue</p>
-                      <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
-                    </div>
-                    <div>
-                      <StockUpIcon />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between">
-                    <div>
-                      <MonthlyRevenueIcon />
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Monthly Revenue</p>
-                      <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
-                    </div>
-                    <div>
-                      <StockUpIcon />
-                    </div>
-                  </div>
-
-                </div>
-
-                <div>
-
-                </div>
-              </div>
-
             </div>
           </div>
         </div>

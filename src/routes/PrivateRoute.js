@@ -7,5 +7,5 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
   const auth = useSelector((state) => state.authenticated);
   // const dispatch = useDispatch();
 
-  return auth?.token !== undefined ? <Outlet /> : <Navigate to="/login" />;
+  return auth?.token ? <Outlet /> : <Navigate to="/login" />;
 };

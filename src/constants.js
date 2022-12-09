@@ -1,4 +1,4 @@
-const base_url = "http://localhost:5000"
+const base_url = "http://10.1.28.171:5000"
 const uploadSales = base_url + "/upload/sales"
 const uploadInventory = base_url + "/upload/inventory"
 const register = base_url + "/auth/register"

@@ -7,6 +7,7 @@ import Analysis from "../pages/analysis";
 import Insights from "../pages/insights";
 import Upload from "../pages/upload";
 import Register from "../pages/register";
+import { Navigate } from 'react-router-dom';
 export const PublicRoute = () => {
     
   return (
@@ -18,7 +19,7 @@ export const PublicRoute = () => {
         {/* <Route exact path="/" element={<Home />} /> */}
 
         <Route exact path="/" element={<PrivateRoute />}>
-          <Route exact path="/" element={<Dashboard />} />  
+          <Route exact path="/" element={<Navigate to="/dashboard" />} />  
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/analysis" element={<Analysis />} />
           <Route exact path="/insights" element={<Insights />} />

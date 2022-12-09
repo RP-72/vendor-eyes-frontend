@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setAuthToken } from "../redux/slices/authSlice";
 import "./style.css";
 
-function logout() {
-  localStorage.clear();
-  window.location.href = "/";
-}
+
 
 const Header = () => {
-    const [today, setDate] = useState(new Date());
-
+  const [today, setDate] = useState(new Date());
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(setAuthToken(null));  
+    window.location.href = "/";
+  }
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());

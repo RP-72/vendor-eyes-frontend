@@ -81,7 +81,13 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-            <Graph data={
+          <div
+            style={{
+              marginTop: "50px"
+            }}
+          >
+            <Graph 
+            data={
               dashboardData.dailySales?.x?.map((val, ind) => {
                 return {
                   name: dashboardData.dailySales?.x[ind],
@@ -89,6 +95,7 @@ const Dashboard = () => {
                 }
               })
             } />
+          </div>
         </div>
       </div>
     </>
