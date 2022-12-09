@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { DownArrowIcon } from "../assets/icons";
 import "./style.css";
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "/";
+}
 
 const Header = () => {
     const [today, setDate] = useState(new Date());
@@ -14,6 +18,7 @@ const Header = () => {
       clearInterval(timer);
     };
   }, []);
+  
     return (
         <>
             <div>
@@ -23,8 +28,12 @@ const Header = () => {
                     </div>
                     <div className="flex gap-3 items-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-8 h-8 rounded-full" alt="" />
-                        <p className="text-text3 text-lg">Gautam Reddy</p>
-                        <DownArrowIcon />
+                        <p className="text-text3 text-lg">
+                            
+                        </p>
+                        <button onClick={logout}>
+                            Log out
+                        </button>
                     </div>
                 </div>
             </div>
