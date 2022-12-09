@@ -13,7 +13,7 @@ const Sidebar = () => {
                     <div className='flex items-center justify-center'>
                         <div className='mt-3 flex gap-2 items-center cursor-pointer' onClick={() => navigate("/dashboard")}>
                             <Logo />
-                            <h1 className='font-bold'>Business Analytica</h1>
+                            <h1 className='font-bold'>Vendor Eyes</h1>
                         </div>
                     </div>
 

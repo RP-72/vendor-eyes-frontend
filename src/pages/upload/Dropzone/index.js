@@ -4,9 +4,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
+import {useDispatch} from "react-redux";
+import { setOffset } from "../../../redux/slices/dataSlice";
 
 export default function Dropzone({uploadUrl}) {
   // drag state
+  const dispatch = useDispatch();
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,24 +36,28 @@ export default function Dropzone({uploadUrl}) {
   }
   const handleUpload = function() {
     // make an API call to upload the file
-
+    console.log(file)
     const formData = new FormData();
     formData.append('file', file);
-    axios.post(uploadUrl, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then(response => {
-      // handle the response
-      console.log(response);
-    })
-    .catch(error => {
-      // handle the error
-      console.log(error);
-    });
-
-    // setFile(null)
+    // axios.post(uploadUrl, formData, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // })
+    // .then(response => {
+    //   // handle the response
+    //   console.log(response);
+    // })
+    // .catch(error => {
+    //   // handle the error
+    //   console.log(error);
+    // });
+    setLoading(true);
+    dispatch(setOffset())
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    setFile(null)
   }
   const handleDrop = function(e) {
     e.preventDefault();
@@ -78,7 +85,7 @@ export default function Dropzone({uploadUrl}) {
     <div id="file-uploader">
     {
       loading ? (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'centre' }}>
           <CircularProgress />
         </Box>
       ) : (

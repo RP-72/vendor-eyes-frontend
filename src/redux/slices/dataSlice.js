@@ -4,10 +4,10 @@ export const dataSlice = createSlice({
   name: "data",
   initialState: { offset: 0 },
   reducers: {
-    setIsAuthenticated: (state, action) => {
-      state.offset += 10;
+    setOffset: (state, action) => {
+      state.offset += 9430;
     },
   },
 });
-export const { setIsAuthenticated, setAuthToken } = dataSlice.actions;
+export const { setOffset } = dataSlice.actions;
 export default dataSlice.reducer;

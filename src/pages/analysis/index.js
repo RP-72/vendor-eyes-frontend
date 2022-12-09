@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { GrowthIcon, MonthlyRevenueIcon, MultiUserIcon, RupeeIcon, SearchIcon, ShopIcon, StockUpIcon, UserIcon } from "../../assets/icons";
+import { GrowthIcon, MonthlyRevenueIcon, MultiUserIcon, RupeeIcon, SearchIcon, ShopIcon, StockUpIcon, StockDownIcon, UserIcon } from "../../assets/icons";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllStore, getRecentTransactions } from "../../apis/storeApis";
@@ -9,6 +9,7 @@ import "./style.css";
 import Sidebar from "../../sidebar";
 
 const Analysis = () => {
+  const offset = useSelector((state) => state.data.offset);
   return (
     <>
       <div className="main">
@@ -27,13 +28,32 @@ const Analysis = () => {
 
               <div className="mt-4 grid grid-cols-2 gap-8">
                 <div className="flex flex-col justify-between">
-                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between">
+                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between"
+                    style={{marginBottom: "20px"}}
+                  >
+                    <div>
+                      <MonthlyRevenueIcon />
+                    </div>
+                    <div
+                      className="flex flex-col justify-center"
+                    >
+                      <p>Monthly Revenue for Veg Momos</p>
+                      <h2 className="text-2xl font-bold mt-1">₹{52000 + offset}</h2>
+                    </div>
+                    <div>
+                      <StockUpIcon />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between"
+                    style={{marginBottom: "20px"}}
+                  >
                     <div>
                       <MonthlyRevenueIcon />
                     </div>
                     <div>
-                      <p className="text-text2 text-xs">Monthly Revenue</p>
-                      <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
+                      <p className="text">Monthly Revenue for Chilli Momos</p>
+                      <h2 className="text-2xl font-bold mt-1">₹45000</h2>
                     </div>
                     <div>
                       <StockUpIcon />
@@ -45,24 +65,13 @@ const Analysis = () => {
                       <MonthlyRevenueIcon />
                     </div>
                     <div>
-                      <p className="text-text2 text-xs">Monthly Revenue</p>
-                      <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
+                      <p className="text">Monthly Revenue for Chocolate Momos</p>
+                      <h2 className="text-2xl font-bold mt-1">₹9600</h2>
                     </div>
-                    <div>
-                      <StockUpIcon />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center bg-white px-4 py-8 rounded-xl shadow-md justify-between">
-                    <div>
-                      <MonthlyRevenueIcon />
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Monthly Revenue</p>
-                      <h2 className="text-2xl font-bold mt-1">$52.6k</h2>
-                    </div>
-                    <div>
-                      <StockUpIcon />
+                    <div
+                      style={{transform: "rotate(180deg)"}}
+                    >
+                      <StockDownIcon />
                     </div>
                   </div>
                 </div>
@@ -80,29 +89,43 @@ const Analysis = () => {
                 </div>
               </div>
 
-              <div className="bg-white shadow-md rounded-lg p-6">
+              <div className="bg-white shadow-md rounded-lg p-6 mb-5">
                 <div>
-                  <h3 className="font-semibold">Trending Products in your area 📍</h3>
+                  <h3 className="font-semibold">Trending Products in Navrangpura 📍</h3>
                   <div className="mt-4 flex justify-around items-center">
 
                     <div className="flex flex-col gap-3 items-center justify-center">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-36 h-36 rounded-full" alt="" />
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Dumplings_of_Gilgit.jpg/220px-Dumplings_of_Gilgit.jpg" className="w-36 h-36 rounded-full" alt="" />
                       <h3 className="font-semibold text-base">Veg Momos</h3>
                     </div>
 
                     <div className="flex flex-col gap-3 items-center justify-center">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-36 h-36 rounded-full" alt="" />
-                      <h3 className="font-semibold text-base">Veg Momos</h3>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Plateful_of_Momo_in_Nepal.jpg/220px-Plateful_of_Momo_in_Nepal.jpg" className="w-36 h-36 rounded-full" alt="" />
+                      <h3 className="font-semibold text-base">Cheese Momos</h3>
                     </div>
 
                     <div className="flex flex-col gap-3 items-center justify-center">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-36 h-36 rounded-full" alt="" />
-                      <h3 className="font-semibold text-base">Veg Momos</h3>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Momo101.jpg/200px-Momo101.jpg" className="w-36 h-36 rounded-full" alt="" />
+                      <h3 className="font-semibold text-base">Chilli Momos</h3>
                     </div>
 
                     <div className="flex flex-col gap-3 items-center justify-center">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-36 h-36 rounded-full" alt="" />
-                      <h3 className="font-semibold text-base">Veg Momos</h3>
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Kothey_momo.JPG/200px-Kothey_momo.JPG" className="w-36 h-36 rounded-full" alt="" />
+                      <h3 className="font-semibold text-base">Pan fried Momos</h3>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white shadow-md rounded-lg p-6 mb-5">
+                <div>
+                  <h3 className="font-semibold">Products that have not been performing well in Navrangpura 📍</h3>
+                  <div className="mt-4 flex justify-around items-center">
+
+                    <div className="flex flex-col gap-3 items-center justify-center">
+                      <img src="https://smedia2.intoday.in/indiatoday/images/stories/2017July/momo3-mos_070617053948.jpg" className="w-36 h-36 rounded-full" alt="" />
+                      <h3 className="font-semibold text-base">Chocolate Momos</h3>
                     </div>
 
                   </div>

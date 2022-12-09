@@ -30,7 +30,7 @@ const Header = () => {
                         <p className="text-2xl font-bold">{today.getHours()}:{today.getMinutes()}:{today.getSeconds()}</p>
                     </div>
                     <div className="flex gap-3 items-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg" className="w-8 h-8 rounded-full" alt="" />
+                        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" className="w-8 h-8 rounded-full" alt="" />
                         <p className="text-text3 text-lg">
                             
                         </p>

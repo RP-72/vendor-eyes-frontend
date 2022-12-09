@@ -212,6 +212,22 @@ export const StockUpIcon = () => {
     </svg>
   )
 }
+export const StockDownIcon = () => {
+  return (
+    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_51_1459)">
+        <path d="M22.5 37.5C14.2313 37.5 7.5 30.7687 7.5 22.5C7.5 14.2313 14.2313 7.5 22.5 7.5C30.7687 7.5 37.5 14.2313 37.5 22.5C37.5 30.7687 30.7687 37.5 22.5 37.5ZM22.5 41.25C32.85 41.25 41.25 32.85 41.25 22.5C41.25 12.15 32.85 3.75 22.5 3.75C12.15 3.75 3.75 12.15 3.75 22.5C3.75 32.85 12.15 41.25 22.5 41.25ZM22.5 15L30 22.5H24.375V30H20.625V22.5H15L22.5 15Z" fill="#ED6855" />
+      </g>
+      <defs>
+        <clipPath id="clip0_51_1459">
+          <rect width="45" height="45" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
+
 
 export const SearchIcon = () => {
   return (
