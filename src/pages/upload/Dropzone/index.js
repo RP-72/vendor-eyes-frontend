@@ -6,6 +6,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
 import {useDispatch} from "react-redux";
 import { setOffset } from "../../../redux/slices/dataSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 export default function Dropzone({uploadUrl}) {
   // drag state
@@ -56,8 +58,34 @@ export default function Dropzone({uploadUrl}) {
     dispatch(setOffset())
     setTimeout(() => {
       setLoading(false);
+      if(file.type === "text/csv"){
+
+        toast.success('File uploaded successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        toast.error('Please upload .csv file', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      }
     }, 2000);
+
     setFile(null)
+    
   }
   const handleDrop = function(e) {
     e.preventDefault();
@@ -85,9 +113,11 @@ export default function Dropzone({uploadUrl}) {
     <div id="file-uploader">
     {
       loading ? (
+        <div className=" flex items-center justify-center" style={{"width": "448px", height: "256px"}}>
         <Box sx={{ display: 'flex', justifyContent: 'centre' }}>
           <CircularProgress />
         </Box>
+        </div>
       ) : (
         <form id="form-file-upload" onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
           <input ref={inputRef} type="file" id="input-file-upload" multiple={true} onChange={handleChange} />
@@ -127,6 +157,20 @@ export default function Dropzone({uploadUrl}) {
         </form>
       )
     }
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+{/* Same as */}
+<ToastContainer />
     </div>
 
   );

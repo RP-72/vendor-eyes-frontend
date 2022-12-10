@@ -60,7 +60,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Monthly Revenue</p>
-                    <h2 className="text-2xl font-bold mt-1">₹{ 241010 + offset || dashboardData.monthlyRevenue}</h2>
+                    <h2 className="text-2xl font-bold mt-1 text-text1">₹{ 241010 + offset || dashboardData.monthlyRevenue}</h2>
                   </div>
                 </div>
 
@@ -70,7 +70,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Total Revenue</p>
-                    <h2 className="text-2xl font-bold mt-1">₹{372540 + offset || dashboardData.totalProducts}</h2>
+                    <h2 className="text-2xl font-bold mt-1 text-text1">₹{372540 + offset || dashboardData.totalProducts}</h2>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Number of Stores</p>
-                    <h2 className="text-2xl font-bold mt-1">{1 || dashboardData.totalStores}</h2>
+                    <h2 className="text-2xl font-bold mt-1 text-text1">{1 || dashboardData.totalStores}</h2>
                   </div>
                 </div>
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <p className="text-text2 text-xs">Number of Products</p>
-                    <h2 className="text-2xl font-bold mt-1">{15 || dashboardData.totalRevenue}</h2>
+                    <h2 className="text-2xl font-bold mt-1 text-text1">{15 || dashboardData.totalRevenue}</h2>
                   </div>
                 </div>
               </div>
